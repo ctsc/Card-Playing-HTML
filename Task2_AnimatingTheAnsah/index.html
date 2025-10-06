@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animating the Answer — In Class Ex #5</title>
+  <style>
+    /* In Class Ex #5 — Task #2: Animating the Answer (Ansah) */
+    :root {
+      --bg: #0f172a;
+      --fg: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #1e293b, var(--bg));
+      color: var(--fg);
+    }
+    .wrap {
+      max-width: 900px;
+      padding: 24px 28px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+    }
+    #question {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0 0 18px 0;
+      /* transition requirement: transform over 0.6s with ease-in-out */
+      transition: transform 0.6s ease-in-out;
+      display: inline-block;
+    }
+    /* hover: scale down to 0.9 */
+    #question:hover {
+      transform: scale(0.9);
+    }
+    #answer {
+      font-size: 40px;
+      font-weight: 800;
+      display: inline-block;
+      /* Start animation 1s after CSS loads; duration 2s */
+      animation: moveFraction 2s ease 1s forwards;
+    }
+    /* Keyframes per rubric:
+       - 0%: color yellow, translate(-355px, 60px)
+       - 50%: translate(0px, 60px)
+       - 100%: color red, translate(0px, 0px)
+    */
+    @keyframes moveFraction {
+      0% {
+        color: yellow;
+        transform: translate(-355px, 60px);
+      }
+      50% {
+        transform: translate(0px, 60px);
+      }
+      100% {
+        color: red;
+        transform: translate(0px, 0px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="question">What is 3/4 + 1/4 = <span id="answer">3/4</span></div>
+    <!-- The 3/4 text moves from off-screen left under the question, then up next to the '=' -->
+  </div>
+</body>
+</html>
